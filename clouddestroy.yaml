@@ -1,0 +1,17 @@
+  
+
+## [START tf destroy]
+steps:
+- id: 'tf destroy'
+  name: 'hashicorp/terraform:0.12.9'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME" Destroy
+      echo "***********************"
+      cd environments/$BRANCH_NAME
+      terraform init  
+      terraform destroy -auto-approve -lock=false
+## [END sh-config]  
